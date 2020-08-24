@@ -1,0 +1,55 @@
+﻿@model ReliableCarDealership.Models.Part
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Part</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.PartMakeModel)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.PartMakeModel)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.PartVehicleYear)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.PartVehicleYear)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.PartPrice)
+        </dt>
+        <dd class = "col-sm-10">
+            $@Html.DisplayFor(model => model.PartPrice)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.PartImage)
+        </dt>
+        <dd class="col-sm-10">
+            <img class="card-img-top" src="~/img/@Model.PartImage">
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.PartId">Edit</a> |
+    <a asp-action="Index">Back to List</a> |
+    <a asp-controller="ShoppingCart" asp-action="AddToCart" asp-route-partId="@Model.PartId">Add To Cart</a>
+</div>

@@ -1,0 +1,72 @@
+﻿@model ReliableCarDealership.Models.TestDrive
+
+
+@{
+    ViewData["Title"] = "TestDrive";
+    var items = Model.TestDriveCarsList;
+}
+
+<h1>Testdrive Booked</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => items.FirstOrDefault().Car.MakeModel)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => items.FirstOrDefault().Car.Mileage),km
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => items.FirstOrDefault().Car.YearOfProduct)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => items.FirstOrDefault().Car.Engine)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => items.FirstOrDefault().Car.Price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => items.FirstOrDefault().Car.CarImage)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => items.FirstOrDefault().TestDriveDate)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in items)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Car.MakeModel)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Car.Mileage)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Car.YearOfProduct)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Car.Engine)
+            </td>
+            <td>
+
+                $@Html.DisplayFor(modelItem => item.Car.Price)
+            </td>
+            <td>
+                <img class="card-img-top" src="~/img/@item.Car.CarImage">
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TestDriveDate)
+            </td>            
+            
+    <td>
+        <a asp-action="Edit" asp-route-id="@Model.Id">Edit TestDrive Date</a> |
+        <a asp-action="Delete" asp-route-id="@Model.Id">Delete</a>
+    </td>
+        </tr>
+        }
+    </tbody>
+</table>

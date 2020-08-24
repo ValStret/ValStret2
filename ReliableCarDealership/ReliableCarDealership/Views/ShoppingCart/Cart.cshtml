@@ -1,0 +1,75 @@
+﻿
+@model ReliableCarDealership.Models.Cart
+@{
+    ViewData["Title"] = "Cart";
+    var items = Model.ItemsList;
+}
+
+<h1>Cart</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => items.FirstOrDefault().CartItemPart.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => items.FirstOrDefault().CartItemPart.PartMakeModel)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => items.FirstOrDefault().CartItemPart.PartVehicleYear)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => items.FirstOrDefault().CartItemPart.PartPrice)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => items.FirstOrDefault().CartItemPart.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => items.FirstOrDefault().CartItemPart.PartImage)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => items.FirstOrDefault().Quantity)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in items)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CartItemPart.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CartItemPart.PartMakeModel)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CartItemPart.PartVehicleYear)
+            </td>
+            <td>
+                $@Html.DisplayFor(modelItem => item.CartItemPart.PartPrice)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CartItemPart.Description)
+            </td>
+            <td>
+                <img class="card-img-top" src="~/img/@item.CartItemPart.PartImage">
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Quantity)
+            </td>
+            <!--
+    <td>
+        <a asp-action="Edit" asp-route-id="@item.PartId">Edit</a> |
+        <a asp-action="Details" asp-route-id="@item.PartId">Details</a> |
+        <a asp-action="Delete" asp-route-id="@item.PartId">Delete</a>
+    </td>-->
+        </tr>
+        }
+    </tbody>
+</table>
+<div>
+    <a asp-controller="CheckOut" asp-action="Checkout">Checkout</a>
+</div>
+
